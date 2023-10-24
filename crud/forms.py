@@ -4,7 +4,19 @@ from .models import EventModel
 class EventForm(forms.ModelForm):
     class Meta:
         model = EventModel  
-        fields = ["author", "title", "event", "neighborhood", "pic", "lost", "found"]
+        fields = ["author",
+                  "title",
+                  "event",
+                  "neighborhood",
+                  "eyesColor",
+                  "furColor",
+                  "gender",
+                  "age",
+                  "pic",
+                  "lost",
+                  "found",
+                  "contact"
+                  ]
 
         def __init__(self, *args, **kwargs):
             super(EventForm, self).__init__(*args, **kwargs)
