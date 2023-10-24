@@ -1,0 +1,70 @@
+{% extends "general_users_template.html" %}
+
+{% block eventList %}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+
+        <!-- left colunm -->
+        <div class="col">
+            <div class="container text-center">
+                <h1>Lost PETS</h1>
+            </div>
+            {% for event in eventsToTemplate %} 
+                {% if event.lost == True %}
+                    <div class="card" style="width: 50rem;">
+                        <img src="{{ event.pic.url }}" class="card-img-top" alt="Pet's image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ event.title }}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{ event.event }}</li>
+                            <li class="list-group-item">Neighborhood: {{ event.neighborhood }}</li>
+                            <li class="list-group-item">Author: {{ event.author }}</li>
+                            <li class="list-group-item">date: {{ event.date }}</li>
+                        </ul>
+                        <!-- lost edition permition  -->
+                        {% if event.author == username %}
+                            <div class="card-body">
+                                <a href="{% url 'crud:updateEvent' event.id %}" class="card-link">Edit</a>
+                                <a href="{% url 'crud:deleteEvent' event.id %}" class="card-link">Delete</a>
+                            </div>
+                        {% endif %} 
+                    </div>
+                    <br>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <!-- right colunm -->
+        <div class="col">
+            <div class="container text-center">
+                <h1>Found PETS</h1>
+            </div>
+            {% for event in eventsToTemplate %} 
+                {% if event.lost == False %}
+                    <div class="card" style="width: 50rem;">
+                        <img src="{{ event.pic.url }}" class="card-img-top" alt="Pet's image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ event.title }}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{ event.event }}</li>
+                            <li class="list-group-item">Neighborhood: {{ event.neighborhood }}</li>
+                            <li class="list-group-item">Author: {{ event.author }}</li>
+                            <li class="list-group-item">date: {{ event.date }}</li>
+                        </ul>
+                        <!-- lost edition permition  -->
+                        {% if event.author == username %}
+                            <div class="card-body">
+                                <a href="{% url 'crud:updateEvent' event.id %}" class="card-link">Edit</a>
+                                <a href="{% url 'crud:deleteEvent' event.id %}" class="card-link">Delete</a>
+                            </div>
+                        {% endif %} 
+                    </div> 
+                    <br>                       
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock%}
