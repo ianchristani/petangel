@@ -7,29 +7,64 @@ class EventModel(models.Model):
     title = models.CharField(max_length = 50, blank = False, null = False)
     event = models.TextField(max_length = 250, blank = False, null = False)
 
+    # pet's characteristics Session
+    petsCharacteristics_eyes = (
+        ("Yellow/Golden", "Yellow/Golden"),
+        ("Green", "Green"),
+        ("Blue", "Blue"),
+        ("Copper/amber", "Copper/Amber"),
+        ("Odd-Eyed", "Odd-Eyed (2 different colors each)"),
+        ("Mixed Colors", "Mixed Colors")
+    )
+    eyesColor = models.CharField(max_length = 35, choices = petsCharacteristics_eyes)
+
+    petsCharacteristics_fur = (
+        ("Black", "Black"),
+        ("White", "White"),
+        ("Orange", "Orange"),
+        ("Grey", "Grey"),
+        ("2 different colors", "2 different colors"),
+        ("3 different colors", "3 different colors")
+    )
+    furColor = models.CharField(max_length = 18, choices = petsCharacteristics_fur, help_text="(The dominant one.)")
+
+    petsCharacteristics_gender = (
+        ("Male", "Male"),
+        ("Female", "Female")
+    )
+    gender = models.CharField(max_length = 6, choices = petsCharacteristics_gender)
+
+    petsCharacteristics_age = (
+        ("baby (until 1 year old)", "baby (until 1 year old)"),
+        ("adult (until 10 years old)", "adult (until 10 years old)"),
+        ("senior (from 10 years old)", "senior (from 10 years old)")
+    )
+    age = models.CharField(max_length = 26, choices = petsCharacteristics_age)
+
     # krakow's neighborhood
-    options = (
-            ("bienczyce", "Bieńczyce"),
-            ("prokocim", "Bieżanów-Prokocim"),
-            ("bronowice", "Bronowice"),
-            ("czyzyny", "Czyżyny"),
-            ("debniki", "Dębniki"),
-            ("grzegorzki", "Grzegórzki"),
-            ("krowodrza", "Krowodrza"),
-            ("lagiewniki_Borek", "Łagiewniki–Borek Fałęcki"),
-            ("mistrzejowice", "Mistrzejowice"),
-            ("nowahuta", "Nowa Huta"),
-            ("podgorze", "Podgórze",),
-            ("podgorze_duchackie", "Podgórze Duchackie"),
-            ("pradnik_bialy", "Prądnik Biały"),
-            ("pradnik_czerwony", "Prądnik Czerwony"),
-            ("stare_miasto", "Stare Miasto"),
-            ("swoszowice", "Swoszowice"), 
-            ("wzgorza_krzeslawickie", "Wzgórza Krzesławickie"),
-            ("zwierzyniec", "Zwierzyniec")
+    locationOptions = (
+            ("Bieńczyce", "Bieńczyce"),
+            ("Bieżanów-Prokocim", "Bieżanów-Prokocim"),
+            ("Bronowice", "Bronowice"),
+            ("Czyżyny", "Czyżyny"),
+            ("Dębniki", "Dębniki"),
+            ("Grzegórzki", "Grzegórzki"),
+            ("Krowodrza", "Krowodrza"),
+            ("Łagiewniki–Borek Fałęcki", "Łagiewniki–Borek Fałęcki"),
+            ("Mistrzejowice", "Mistrzejowice"),
+            ("Nowa Huta", "Nowa Huta"),
+            ("Podgórze", "Podgórze",),
+            ("Podgórze Duchackie", "Podgórze Duchackie"),
+            ("Prądnik Biały", "Prądnik Biały"),
+            ("Prądnik Czerwony", "Prądnik Czerwony"),
+            ("Stare Miasto", "Stare Miasto"),
+            ("Swoszowice", "Swoszowice"), 
+            ("Wzgórza Krzesławickie", "Wzgórza Krzesławickie"),
+            ("Zwierzyniec", "Zwierzyniec")
         )
 
-    neighborhood = models.CharField(max_length = 25, choices = options, help_text="(The last time the pet was seen.)")
+    neighborhood = models.CharField(max_length = 25, choices = locationOptions, help_text="(The last time the pet was seen.)")
+    contact = models.EmailField(blank = True, default = "youremail@example.com", help_text="(This info will not be displayed, but if the system finds potential candidates, you will receive a warning.)")
     pic  = models.ImageField(null = True, blank=True, upload_to = "media/")
     date = models.DateField(auto_now = True)
     # if the pet is lost is True
