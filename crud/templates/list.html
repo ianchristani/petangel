@@ -12,7 +12,7 @@
             {% for event in eventsToTemplate %} 
                 {% if event.lost == True %}
                     <div class="card" style="width: 50rem;">
-                        <img src="{{ event.pic.url }}" class="card-img-top" alt="Pet's image">
+                        <a href="{% url 'crud:specificEvent' event.id %}" class="card-lik"><img src="{{ event.pic.url }}" class="card-img-top" alt="Pet's image"></a>
                         <div class="card-body">
                             <h5 class="card-title">{{ event.title }}
                                 {% if event.found == True %}
@@ -51,7 +51,7 @@
             {% for event in eventsToTemplate %} 
                 {% if event.lost == False %}
                     <div class="card" style="width: 50rem;">
-                        <img src="{{ event.pic.url }}" class="card-img-top" alt="Pet's image">
+                        <a href="{% url 'crud:specificEvent' event.id %}" class="card-lik"><img src="{{ event.pic.url }}" class="card-img-top" alt="Pet's image"></a>
                         <div class="card-body">
                             <h5 class="card-title">{{ event.title }}</h5>
                         </div>

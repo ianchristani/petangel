@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
+from crud.searcher.searcher import eventSearcher
 
 # main page
 def index(request):
@@ -36,8 +37,10 @@ def login_view(request):
 
 # logout page
 def logout_view(request):
+    candidates = eventSearcher(request.user)
+    amountResults = len(candidates)
     if request.method == "POST":
         logout(request)
         return redirect("users:index")
     else:
-        return render(request, "logout.html", {"username": request.user})
+        return render(request, "logout.html", {"username": request.user, "amountOfCandidates": amountResults})

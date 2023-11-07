@@ -5,10 +5,10 @@ let locatorContent = document.getElementById("finder");
 switch (theUrl) {
     case "/login/":
       locatorContent.innerHTML = "login in";
-      break;
+    break;
     case "/signup/":
       locatorContent.innerHTML = "signing up";
-      break;
+    break;
     default:
         locatorContent.innerHTML = "Home";
   }
