@@ -1,11 +1,17 @@
 {% extends 'general_template.html' %}
 
 {% block index %}
-    <div class="container m-4">
-        <h1>Welcome to Pet Angels</h1>
-    </div>
-    <div class="container m-4">
+<div class="row align-items-center justify-content-center">
+  <div class="card border-info shadow-lg" style="max-width: 35rem;">
+    <div class="card-body">
+      <div class="container m-4">
+        <h1 class="card-title">Welcome to Pet Angels</h1>
+      </div>
+      <div class="container text-center">
         <p>If you are already registered, <a href="{% url 'users:login' %}">login here</a></p>
         <p>If not, register yourself <a href="{% url 'users:signup' %}">here</a></p>
+      </div>
     </div>
+  </div>
+</div>  
 {% endblock %}

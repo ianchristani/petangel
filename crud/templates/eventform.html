@@ -1,29 +1,43 @@
 {% extends "general_users_template.html" %}
 
 {% block eventForm %}
-<div class="container m-4">
-    {% if id %}
-        <h1>The event's details:</h1>
-    {% else %}
-        <h1>Fill with the event details:</h1>
-    {% endif%}
+<div class="container m-6">
+    <div class="row justify-content-center">
+        <div class="card border-info shadow-lg" style="max-width: 45rem;">
+            <div class="card-body">
+                <div class="container m-2,2,2">
+                    <h5 class="card-title">
+                        {% if id %}
+                            <h4>The event's details:</h4>
+                        {% else %}
+                            <h4>Fill with the event details:</h4>
+                        {% endif%}
+                    </h5>
+                    <hr>
+                </div>
+                <div class="container mt-6">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="container">
+                            {{ eventform.as_p }}
+                              <!-- displaying the date for registered events -->
+                            {% if id %}
+                                <p>The registered date (automatic): <span>{{ id.date }}</span></p>
+                            {% endif %}            
+                        </div>
+                        <div class="container text-center">
+                            <button type="submit" class="btn btn-info mt-4">Submit</button>
+                        </div>       
+                    </form>
+                </div>
+                <div class="container text-center m-6">
+                    {% if id %}
+                        <h6></span><a href="{% url 'crud:deleteEvent' id.id %}">Click here</a></span> if you wan't delete the event <strong> {{ id.title }}</strong>.</h6>
+                    {% endif%}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="container m-4">
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="container">
-            {{ eventform.as_p }}
-              <!-- displaying the date for registered events -->
-            {% if id %}
-                <p>The registered date (automatic): <span>{{ id.date }}</span></p>
-            {% endif %}            
-        </div>        
-        <button type="submit" class="btn btn-primary mt-4">Submit</button>
-    </form>
-</div>
-<div class="container m-4">
-    {% if id %}
-        <h6></span><a href="{% url 'crud:deleteEvent' id.id %}">Click here</a></span> if you wan't delete the event <strong> {{ id.title }}</strong>.</h6>
-    {% endif%}
-</div>
+
 {% endblock %}

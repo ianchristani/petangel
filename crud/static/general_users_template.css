@@ -1,3 +1,4 @@
+/* navbar */
 .path{
     color:aqua;
 }
@@ -16,4 +17,28 @@
 
 #finder{
     color:#ef3636;
+}
+
+
+/* content */
+.row.align-items-center.justify-content-center{
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+
+aside{
+    flex: 1 1 20%;
+    min-height: 100vh;
+    padding: 30px 12px;
+}
+
+
+/* footer */
+.bi.bi-linkedin{
+    font-size: 1.5rem;
+}
+
+.bi.bi-github{
+    font-size: 1.5rem;
+    color:black;
 }

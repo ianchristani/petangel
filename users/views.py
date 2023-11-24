@@ -16,7 +16,7 @@ def signup_view(request):
         if signupForm.is_valid():
             validatedUser = signupForm.save()
             login(request, validatedUser)
-            return redirect("crud:eventList")
+            return redirect("crud:lostList")
     else:
         signupForm = UserCreationForm()
     return render(request, "signup.html", {"signupform": signupForm})
@@ -30,7 +30,7 @@ def login_view(request):
         if authForm.is_valid():
             validatedUser = authForm.get_user()
             login(request, validatedUser)
-            return redirect("crud:eventList")
+            return redirect("crud:lostList")
     else:
         authForm = AuthenticationForm()
     return render(request, "login.html", {"authform": authForm}) 

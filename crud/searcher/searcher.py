@@ -15,7 +15,7 @@ def eventSearcher(user) -> list:
             # from lost to found
             if lostPet.lost == True and foundPet.found == False:
                 try:
-                    if foundPet.neighborhood == lostPet.neighborhood and foundPet.date >= lostPet.date:
+                    if foundPet.neighborhood == lostPet.neighborhood and foundPet.date >= lostPet.date and foundPet.type == lostPet.type:
                         auxlist.append(foundPet)
                 except:
                     print("no result was found")
@@ -23,7 +23,7 @@ def eventSearcher(user) -> list:
             # from found to lost
             if lostPet.lost == False and foundPet.found == False:
                 try:
-                    if foundPet.neighborhood == lostPet.neighborhood and foundPet.date <= lostPet.date:
+                    if foundPet.neighborhood == lostPet.neighborhood and foundPet.date <= lostPet.date and foundPet.type == lostPet.type:
                         auxlist.append(foundPet)
                 except:
                     print("no result was found")

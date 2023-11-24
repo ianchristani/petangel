@@ -1,40 +1,45 @@
 {% extends "general_users_template.html" %}
 
 {% block possibleCandidates %}
-    <div class="container m-4">
-        <div class="container-text-center">
-            <h1>Pet Searcher</h1>
-            <p>Here we might find your pet based on the found pets users' report</p>
-        </div>
-        <div class="container">
-            {% if possCandidates|length > 0 %}
-                {% for candidates in possCandidates %}
-                    <div class="card" style="width: 50rem;">
-                        <a href="{% url 'crud:specificEvent' candidates.id %}" class="card-lik"><img src="{{ candidates.pic.url }}" class="card-img-top" alt="Pet's image"></a>
-                        <div class="card-body">
-                            <h5 class="card-title">{{ candidates.title }}
-                                {% if candidates.found == True %}
-                                <span class="f-info">FOUND</span>
-                                {% endif %}
-                            </h5>
+<div class="row align-items-center justify-content-center">
+    <div class="card border-info shadow-lg" style="max-width: 55rem;">
+        <div class="card-body">
+            <div class="container m-2,2,2">
+                <h2 class="card-title">Pet Searcher</h2>
+                <h4>Here we might find your pet based on the found pets users' report</h4>
+                <hr>
+            </div>            
+            <div class="container">
+                {% if possCandidates|length > 0 %}
+                    {% for candidates in possCandidates %}
+                        <div class="card" style="width: 50rem;">
+                            <a href="{% url 'crud:specificEvent' candidates.id %}" class="card-lik"><img src="{{ candidates.pic.url }}" class="card-img-top" alt="Pet's image"></a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ candidates.title }}
+                                    {% if candidates.found == True %}
+                                        <span class="f-info">FOUND</span>
+                                    {% endif %}
+                                </h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Description:</strong> {{ candidates.event }}</li>                           
+                                <li class="list-group-item"><strong>Neighborhood:</strong> {{ candidates.neighborhood }}</li>
+                                <li class="list-group-item"><strong>Eyes color:</strong> {{ candidates.eyesColor }}</li> 
+                                <li class="list-group-item"><strong>Fur color:</strong> {{ candidates.furColor }}</li> 
+                                <li class="list-group-item"><strong>Gender:</strong> {{ candidates.gender }}</li> 
+                                <li class="list-group-item"><strong>Age:</strong> {{ candidates.age }}</li> 
+                                <li class="list-group-item"><strong>Author:</strong> {{ candidates.author }}</li>
+                                <li class="list-group-item"><strong>date:</strong> {{ candidates.date }}</li>
+                                <li class="list-group-item"><strong>date:</strong> {{ candidates.contact }}</li>
+                            </ul>
                         </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Description:</strong> {{ candidates.event }}</li>                           
-                            <li class="list-group-item"><strong>Neighborhood:</strong> {{ candidates.neighborhood }}</li>
-                            <li class="list-group-item"><strong>Eyes color:</strong> {{ candidates.eyesColor }}</li> 
-                            <li class="list-group-item"><strong>Fur color:</strong> {{ candidates.furColor }}</li> 
-                            <li class="list-group-item"><strong>Gender:</strong> {{ candidates.gender }}</li> 
-                            <li class="list-group-item"><strong>Age:</strong> {{ candidates.age }}</li> 
-                            <li class="list-group-item"><strong>Author:</strong> {{ candidates.author }}</li>
-                            <li class="list-group-item"><strong>date:</strong> {{ candidates.date }}</li>
-                            <li class="list-group-item"><strong>date:</strong> {{ candidates.contact }}</li>
-                        </ul>
-                    </div>
-                    <br>
-                {% endfor %}
-            {% else %}
-            <p>Sorry, no pet that match yours could be found.</p>
-            {% endif %}     
+                        <br>
+                    {% endfor %}
+                {% else %}
+                    <p>Sorry, no pet that match yours could be found.</p>
+                {% endif %}     
+            </div>         
         </div>
-    </div> 
+    </div>
+</div> 
 {% endblock %}
