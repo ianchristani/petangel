@@ -4,7 +4,8 @@ from . import views
 app_name = 'crud'
 
 urlpatterns = [
-    path('list', views.eventList, name = 'eventList'),
+    path('lost/', views.lostList, name = 'lostList'),
+    path('found/', views.foundList, name = 'foundList'),
     path('new/', views.newEvent, name = 'newEvent'),
     path('update/<int:id>', views.updateEvent, name = 'updateEvent'),
     path('delete/<int:id>', views.deleteEvent, name = 'deleteEvent'),

@@ -6,6 +6,14 @@ class EventModel(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length = 50, blank = False, null = False)
     event = models.TextField(max_length = 250, blank = False, null = False)
+    
+    # pet type 
+    petType = (
+        ("cat", "cat"),
+        ("dog", "dog"),
+        ("other", "other")
+    )
+    type = models.CharField(max_length = 5, blank = False, null = False, choices = petType)
 
     # pet's characteristics Session
     petsCharacteristics_eyes = (

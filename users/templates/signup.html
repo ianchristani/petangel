@@ -1,14 +1,23 @@
 {% extends 'general_template.html' %}
 
 {% block signup %}
-    <div class="container m-4">
-        <div class="container">
-            <p><strong>Signup</strong> now:</p>
-            <form action="{% url 'users:signup' %}" method="post">
-                {% csrf_token %}
-                {{ signupform.as_p }}
-                <button type="submit" class="btn btn-info">Send</button>
-            </form>
+<div class="row align-items-center justify-content-center align-items-center">
+    <div class="card border-info shadow-lg" style="max-width: 60rem;">
+        <div class="card-body">
+            <div class="container m-2,2,2">
+                <h5 class="card-title"><strong>Signup</strong> now</h5>
+                <hr>
+            </div>            
+            <div class="container m-6">
+                <form action="{% url 'users:signup' %}" method="post">
+                    {% csrf_token %}
+                    {{ signupform.as_p }}
+                    <div class="container text-center">
+                        <button type="submit" class="btn btn-info">Send</button>
+                    </div>                    
+                </form>
+            </div>            
         </div>
     </div>
+</div>
 {% endblock %}

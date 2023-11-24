@@ -1,0 +1,50 @@
+{% extends "general_users_template.html" %}
+
+{% block foundList %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+
+        <!-- LOST ONES -->
+        <div class="col">
+            <div class="container text-center">
+                <h1>Lost PETS</h1>
+            </div>
+            <div class="custom-scrollbar">
+                {% for event in eventsToTemplate %} 
+                    {% if event.lost == True %}
+                        <div class="card border-info shadow-lg" style="width: 50rem;">
+                            <a href="{% url 'crud:specificEvent' event.id %}" class="card-lik"><img src="{{ event.pic.url }}" class="card-img-top" alt="Pet's image"></a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ event.title }}
+                                    {% if event.found == True %}
+                                    <span class="f-info">FOUND</span>
+                                    {% endif %}
+                                </h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Description:</strong> {{ event.event }}</li>                           
+                                <li class="list-group-item"><strong>Neighborhood:</strong> {{ event.neighborhood }}</li>
+                                <li class="list-group-item"><strong>Eyes color:</strong> {{ event.eyesColor }}</li> 
+                                <li class="list-group-item"><strong>Fur color:</strong> {{ event.furColor }}</li> 
+                                <li class="list-group-item"><strong>Gender:</strong> {{ event.gender }}</li> 
+                                <li class="list-group-item"><strong>Age:</strong> {{ event.age }}</li> 
+                                <li class="list-group-item"><strong>Author:</strong> {{ event.author }}</li>
+                                <li class="list-group-item"><strong>date:</strong> {{ event.date }}</li>
+                            </ul>
+                            <!-- lost edition permition  -->
+                            {% if event.author == username %}
+                                <div class="card-body">
+                                    <a href="{% url 'crud:updateEvent' event.id %}" class="card-link"><button class="btn btn-warning" type="button">Edit</button></a>                                
+                                    <a href="{% url 'crud:deleteEvent' event.id %}" class="link-danger"><button class="btn btn-danger" type="button">Delete</button></a>
+                                </div>
+                            {% endif %} 
+                        </div>
+                        <br>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock%}
