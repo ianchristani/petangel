@@ -8,9 +8,9 @@
                 <div class="container m-2,2,2">
                     <h5 class="card-title">
                         {% if id %}
-                            <h4>The event's details:</h4>
+                            <h4>Szczegóły wydarzenia:</h4>
                         {% else %}
-                            <h4>Fill with the event details:</h4>
+                            <h4>Wypełniasz szczegóły wydarzenia:</h4>
                         {% endif%}
                     </h5>
                     <hr>
@@ -22,18 +22,18 @@
                             {{ eventform.as_p }}
                               <!-- displaying the date for registered events -->
                             {% if id %}
-                                <p>The registered date (automatic): <span>{{ id.date }}</span></p>
+                                <p>Data rejestracji (automatyczny): <span>{{ id.date }}</span></p>
                             {% endif %}            
                         </div>
                         <div class="container text-center">
-                            <button type="submit" class="btn btn-info mt-4">Submit</button>
+                            <button type="submit" class="btn btn-info mt-4">Składać</button>
                         </div>       
                     </form>
                 </div>
                 <br>
                 <div class="container text-center m-6">
                     {% if id %}
-                        <h6></span><a href="{% url 'crud:deleteEvent' id.id %}">Click here</a></span> if you wan't delete the event <strong> {{ id.title }}</strong>.</h6>
+                        <h6></span><a href="{% url 'crud:deleteEvent' id.id %}">Kliknij tutaj </a></span>jeśli nie chcesz usunąć wydarzenia <strong>{{ id.title }}</strong>.</h6>
                     {% endif%}
                 </div>
             </div>

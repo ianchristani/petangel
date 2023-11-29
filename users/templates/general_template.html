@@ -9,24 +9,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'general_template.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <title>PET Angels</title>
+    <title>Zwierzęce anioły</title>
 </head>
 <body>
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">PET Angels</a>
+          <a class="navbar-brand" href="#">Zwierzęce anioły</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a href="{% url 'users:index' %}" class="nav-link">Home</a>
-                </li>              
+              <li class="nav-item">
+                  <a href="{% url 'users:index' %}" class="nav-link">Dom</a>
+              </li> 
             </ul>
             <span class="navbar-text">
-              <span class="path">you are: </span><strong id="finder">.</strong>
+              <span class="path">Jesteś w: </span><strong id="finder">.</strong>
             </span>
           </div>
         </div>
@@ -42,20 +42,20 @@
     <!-- footer -->        
     <div class="card text-center">
       <div class="card-header">
-        <span class="card-text m-4">Developed by Ian Christani 2023</span>
-        <span class="card-text m-4">Pet Angels &copy;</span>
+        <span class="card-text m-4">Opracowany przez Iana Christaniego 2023</span>
+        <span class="card-text m-4">Zwierzęce anioły &copy;</span>
       </div>
       <div class="card-body">
         <div class="container m-6">
-          <h5 class="card-title">About us</h5>
+          <h5 class="card-title">O nas</h5>
           <p class="card-text">
-            It is not everyone, but anyone who had their pet lost knows how difficult those moments were. 
-            Especially when we think that our little one wants to return home and doesn't know how, 
-            it is cold, hungry and in danger. Regarding this, I created this website, which aims 
-            to bring together the dots (those ones who lost their pet and the ones who found a lost pet). 
-            The site has an internal search system that will tell you the possible animals found and, who knows, 
-            maybe one of them is yours. This app means a lot in such times like that and
-            <strong>with your help, it can be helpful</strong>.
+            Nie wszyscy, ale każdy, komu zaginął zwierzak, wie, jakie to były trudne chwile.
+            Zwłaszcza gdy myślimy, że nasz maluch chce wrócić do domu i nie wie jak,
+            jest zimno, głód i zagrożenie. W związku z tym stworzyłem tę stronę internetową, która ma na celu
+            aby połączyć kropki (tych, którzy zgubili swojego zwierzaka i tych, którzy znaleźli zagubionego zwierzaka).
+            Strona posiada wewnętrzny system wyszukiwania, który poinformuje Cię o możliwych znalezionych zwierzętach i, kto wie,
+            może jeden z nich jest Twój. Ta aplikacja wiele znaczy w takich czasach i
+            <strong>z twoją pomocą może być pomocne</strong>.
           </p>
           <a href="https://www.linkedin.com/in/ian-christani/"><i class="bi bi-linkedin m-3"></i></a>
           <a href="https://github.com/ianchristani/petangel"><i class="bi bi-github m-3"></i></a>              

@@ -4,7 +4,7 @@
 <div class="row justify-content-center ">
     <div class="col">
         <div class="container text-center mt-8 mb-2">
-            <h1>Lost PETS</h1>
+            <h1>Zaginął zwierzęta</h1>
         </div>
         <div class="row justify-content-center mt-2 mb-4">
             {% for event in eventsToTemplate %} 
@@ -14,25 +14,26 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ event.title }}
                                 {% if event.found == True %}
-                                <span class="f-info">FOUND</span>
+                                <span class="f-info">ZNALEZIONY</span>
                                 {% endif %}
                             </h5>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Description:</strong> {{ event.event }}</li>                           
-                            <li class="list-group-item"><strong>Neighborhood:</strong> {{ event.neighborhood }}</li>
-                            <li class="list-group-item"><strong>Eyes color:</strong> {{ event.eyesColor }}</li> 
-                            <li class="list-group-item"><strong>Fur color:</strong> {{ event.furColor }}</li> 
-                            <li class="list-group-item"><strong>Gender:</strong> {{ event.gender }}</li> 
-                            <li class="list-group-item"><strong>Age:</strong> {{ event.age }}</li> 
-                            <li class="list-group-item"><strong>Author:</strong> {{ event.author }}</li>
-                            <li class="list-group-item"><strong>date:</strong> {{ event.date }}</li>
+                            <li class="list-group-item"><strong>Opis: </strong> {{ event.event }}</li>                           
+                            <li class="list-group-item"><strong>Sąsiedztwo: </strong> {{ event.neighborhood }}</li>
+                            <li class="list-group-item"><strong>Kolor oczu: </strong> {{ event.eyesColor }}</li> 
+                            <li class="list-group-item"><strong>Kolor futra: </strong> {{ event.furColor }}</li> 
+                            <li class="list-group-item"><strong>Typ zwierzaka: </strong> {{ event.petType }}</li>
+                            <li class="list-group-item"><strong>Płeć: </strong> {{ event.gender }}</li> 
+                            <li class="list-group-item"><strong>Wiek: </strong> {{ event.age }}</li> 
+                            <li class="list-group-item"><strong>Author: </strong> {{ event.author }}</li>
+                            <li class="list-group-item"><strong>Data: </strong> {{ event.date }}</li>
                         </ul>
                         <!-- lost edition permition  -->
                         {% if event.author == username %}
                             <div class="card-body">
-                                <a href="{% url 'crud:updateEvent' event.id %}" class="card-link"><button class="btn btn-warning" type="button">Edit</button></a>                                
-                                <a href="{% url 'crud:deleteEvent' event.id %}" class="link-danger"><button class="btn btn-danger" type="button">Delete</button></a>
+                                <a href="{% url 'crud:updateEvent' event.id %}" class="card-link"><button class="btn btn-warning" type="button">Edytować</button></a>                                
+                                <a href="{% url 'crud:deleteEvent' event.id %}" class="link-danger"><button class="btn btn-danger" type="button">Usuwać</button></a>
                             </div>
                         {% endif %} 
                     </div>
