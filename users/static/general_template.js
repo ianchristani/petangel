@@ -4,11 +4,11 @@ let locatorContent = document.getElementById("finder");
 
 switch (theUrl) {
     case "/login/":
-      locatorContent.innerHTML = "login in";
+      locatorContent.innerHTML = "zaloguj się";
     break;
     case "/signup/":
-      locatorContent.innerHTML = "signing up";
+      locatorContent.innerHTML = "zarejestruj się";
     break;
     default:
-        locatorContent.innerHTML = "Home";
+        locatorContent.innerHTML = "strona główna";
   }

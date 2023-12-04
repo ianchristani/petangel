@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # the table
 class EventModel(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Author")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Autor")
     title = models.CharField(max_length = 50, blank = False, null = False, verbose_name="Tytuł")
     event = models.TextField(max_length = 250, blank = False, null = False, verbose_name="Opis")
     
@@ -21,7 +21,6 @@ class EventModel(models.Model):
         ("Zielony", "Zielony"),
         ("Niebieski", "Niebieski"),
         ("Miedź/bursztyn", "Miedź/bursztyn"),
-        ("Dziwne oczy", "Dziwne oczy"),
         ("Mieszane kolory", "Mieszane kolory")
     )
     eyesColor = models.CharField(max_length = 35, choices = petsCharacteristics_eyes, blank = True, null = True, verbose_name="Kolor oczu")
@@ -29,21 +28,21 @@ class EventModel(models.Model):
     petsCharacteristics_fur = (
         ("Czarny", "Czarny"),
         ("Biały", "Biały"),
-        ("Pomarańczy", "Pomarańczy"),
+        ("Rudy", "Rudy"),
         ("Szary", "Szary"),
         ("Dwa różne kolory", "Dwa różne kolory"),
-        ("Try różne kolory", "Try różne kolory")
+        ("Trzy różne kolory", "Trzy różne kolory")
     )
     furColor = models.CharField(max_length = 18, choices = petsCharacteristics_fur, help_text="(Dominujący)", verbose_name="Kolor futra")
 
     petsCharacteristics_gender = (
-        ("Mężczyzna", "Mężczyzna"),
-        ("Kobieta", "Kobieta")
+        ("Samiec", "Samiec"),
+        ("Samica", "Samica")
     )
     gender = models.CharField(max_length = 9, choices = petsCharacteristics_gender, blank = True, null = True, verbose_name="Płeć")
 
     petsCharacteristics_age = (
-        ("dziecko (do 1 roku życia)", "dziecko (do 1 roku życia)"),
+        ("szczenię (do 1 roku życia)", "szczenię (do 1 roku życia)"),
         ("dorosły (do 10 roku życia)", "dorosły (do 10 roku życia)"),
         ("seniorzy (od 10 lat)", "seniorzy (od 10 lat)")
     )
@@ -79,9 +78,9 @@ class EventModel(models.Model):
     date = models.DateField(auto_now = True, verbose_name="Data")
 
     # if the pet is lost is True
-    lost = models.BooleanField(help_text = "(Zaznacz to pole, jeśli TWÓJ zwierzak zaginął. Jeśli znalazłeś zwierzaka, NIE zaznaczaj go.)", verbose_name="Zaginął zwierzęta")
+    lost = models.BooleanField(help_text = "(Zaznacz to pole, jeśli Twój zwierzak ZAGINĄŁ. Jeśli znalazłeś zwierzaka, NIE zaznaczaj żadnego z pól.)", verbose_name="Zaginiony zwierzak")
     # this option is to be marked if the pet was found
-    found = models.BooleanField(default = False, help_text="(Zaznacz to pole, jeśli ZNALEZIONO Twoje zwierzę)", verbose_name="Znaleziono zwierzęta")
+    found = models.BooleanField(default = False, help_text="(Zaznacz to pole, jeśli Twój pupil już się ODNALAZŁ. Jeśli znalazłeś zwierzaka, NIE zaznaczaj żadnego z pól.)", verbose_name="Znaleziony zwierzak")
 
     # displaying the colunms with names
     def __str__(self) -> str:
