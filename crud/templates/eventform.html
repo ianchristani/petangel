@@ -1,44 +1,47 @@
 {% extends "general_users_template.html" %}
 
 {% block eventForm %}
-<div class="container m-6">
-    <div class="row justify-content-center mt-4 mb-4">
-        <div class="card border-info shadow-lg" style="max-width: 45rem;">
-            <div class="card-body">
-                <div class="container m-2,2,2">
-                    <h5 class="card-title">
-                        {% if id %}
-                            <h4>Szczegóły wydarzenia:</h4>
-                        {% else %}
-                            <h4>Wypełniasz szczegóły wydarzenia:</h4>
-                        {% endif%}
-                    </h5>
-                    <hr>
-                </div>
-                <div class="container mt-6">
-                    <form method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="container">
-                            {{ eventform.as_p }}
-                              <!-- displaying the date for registered events -->
+<div class="container fluid p-4">
+    <div class="container m-6">
+        <div class="row justify-content-center mt-4 mb-4">
+            <div class="card border-info shadow-lg" style="max-width: 45rem;">
+                <div class="card-body">
+                    <div class="container m-2,2,2">
+                        <h5 class="card-title">
                             {% if id %}
-                                <p>Data rejestracji (automatyczny): <span>{{ id.date }}</span></p>
-                            {% endif %}            
-                        </div>
-                        <div class="container text-center">
-                            <button type="submit" class="btn btn-info mt-4">Wyślij</button>
-                        </div>       
-                    </form>
-                </div>
-                <br>
-                <div class="container text-center m-6">
-                    {% if id %}
-                        <h6></span><a href="{% url 'crud:deleteEvent' id.id %}">Kliknij tutaj </a></span>jeśli nie chcesz usunąć wydarzenia <strong>{{ id.title }}</strong>.</h6>
-                    {% endif%}
+                                <h4>Szczegóły wydarzenia:</h4>
+                            {% else %}
+                                <h4>Wypełniasz szczegóły wydarzenia:</h4>
+                            {% endif%}
+                        </h5>
+                        <hr>
+                    </div>
+                    <div class="container mt-6">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="container">
+                                {{ eventform.as_p }}
+                                  <!-- displaying the date for registered events -->
+                                {% if id %}
+                                    <p>Data rejestracji (automatyczny): <span>{{ id.date }}</span></p>
+                                {% endif %}            
+                            </div>
+                            <div class="container text-center">
+                                <button type="submit" class="btn btn-info mt-4">Wyślij</button>
+                            </div>       
+                        </form>
+                    </div>
+                    <br>
+                    <div class="container text-center m-6">
+                        {% if id %}
+                            <h6></span><a href="{% url 'crud:deleteEvent' id.id %}">Kliknij tutaj </a></span>jeśli nie chcesz usunąć wydarzenia <strong>{{ id.title }}</strong>.</h6>
+                        {% endif%}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 {% endblock %}

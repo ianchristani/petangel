@@ -1,43 +1,46 @@
 {% extends "general_users_template.html" %}
 
 {% block possibleCandidates %}
-<div class="row justify-content-center">
-    <div class="col">
-        <div class="container text-center">
-            <h1 class="card-title">Poszukiwacz zwierząt</h1>
-            <h4>Tutaj możemy znaleźć Twojego zwierzaka na podstawie raportu użytkowników o znalezionych zwierzętach.</h4>
-        </div> 
-        <div class="row justify-content-center mt-4 mb-4">
-            {% if possCandidates|length > 0 %}
-                {% for candidates in possCandidates %}
-                    <div class="card border-info shadow-lg" style="max-width: 45rem;">                     
-                        <a href="{% url 'crud:specificEvent' candidates.id %}"><img src="{{ candidates.pic.url }}" class="card-img-top mt-2" alt="Pet's image"></a>
-                        <div class="card-body">
-                            <h5 class="card-title">{{ candidates.title }}
-                                {% if candidates.found == True %}
-                                    <span class="f-info">ZNALEZIONY</span>
-                                {% endif %}
-                            </h5>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Opis: </strong> {{ candidates.event }}</li>                           
-                            <li class="list-group-item"><strong>Sąsiedztwo: </strong> {{ candidates.neighborhood }}</li>
-                            <li class="list-group-item"><strong>Kolor oczu: </strong> {{ candidates.eyesColor }}</li> 
-                            <li class="list-group-item"><strong>Kolor futra: </strong> {{ candidates.furColor }}</li> 
-                            <li class="list-group-item"><strong>Typ zwierzaka: </strong> {{ event.petType }}</li>
-                            <li class="list-group-item"><strong>Płeć: </strong> {{ candidates.gender }}</li> 
-                            <li class="list-group-item"><strong>Wiek: </strong> {{ candidates.age }}</li> 
-                            <li class="list-group-item"><strong>Autor: </strong> {{ candidates.author }}</li>
-                            <li class="list-group-item"><strong>Data: </strong> {{ candidates.date }}</li>
-                            <li class="list-group-item"><strong>Kontakt: </strong> {{ candidates.contact }}</li>
-                        </ul>
-                    </div>    
-                    <br>
-                {% endfor %}
-            {% else %}
-                <p>Przepraszamy, nie znaleziono żadnego zwierzaka pasującego do Twojego opisu.</p>
-            {% endif %} 
-        </div>      
+<div class="container fluid p-4">
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="container text-center">
+                <h1 class="card-title">Poszukiwacz zwierząt</h1>
+                <h4>Tutaj możemy znaleźć Twojego zwierzaka na podstawie raportu użytkowników o znalezionych zwierzętach.</h4>
+            </div> 
+            <div class="row justify-content-center mt-4 mb-4">
+                {% if possCandidates|length > 0 %}
+                    {% for candidates in possCandidates %}
+                        <div class="card border-info shadow-lg" style="max-width: 45rem;">                     
+                            <a href="{% url 'crud:specificEvent' candidates.id %}"><img src="{{ candidates.pic.url }}" class="card-img-top mt-2" alt="Pet's image"></a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ candidates.title }}
+                                    {% if candidates.found == True %}
+                                        <span class="f-info">ZNALEZIONY</span>
+                                    {% endif %}
+                                </h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>Opis: </strong> {{ candidates.event }}</li>                           
+                                <li class="list-group-item"><strong>Sąsiedztwo: </strong> {{ candidates.neighborhood }}</li>
+                                <li class="list-group-item"><strong>Kolor oczu: </strong> {{ candidates.eyesColor }}</li> 
+                                <li class="list-group-item"><strong>Kolor futra: </strong> {{ candidates.furColor }}</li> 
+                                <li class="list-group-item"><strong>Typ zwierzaka: </strong> {{ event.petType }}</li>
+                                <li class="list-group-item"><strong>Płeć: </strong> {{ candidates.gender }}</li> 
+                                <li class="list-group-item"><strong>Wiek: </strong> {{ candidates.age }}</li> 
+                                <li class="list-group-item"><strong>Autor: </strong> {{ candidates.author }}</li>
+                                <li class="list-group-item"><strong>Data: </strong> {{ candidates.date }}</li>
+                                <li class="list-group-item"><strong>Kontakt: </strong> {{ candidates.contact }}</li>
+                            </ul>
+                        </div>    
+                        <br>
+                    {% endfor %}
+                {% else %}
+                    <p>Przepraszamy, nie znaleziono żadnego zwierzaka pasującego do Twojego opisu.</p>
+                {% endif %} 
+            </div>      
+        </div>
     </div>
-</div>     
+</div>
+     
 {% endblock %}
