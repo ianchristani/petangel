@@ -1,24 +1,26 @@
 {% extends "general_users_template.html" %}
 
 {% block eventDelete %}
-<div class="row align-items-center justify-content-center">
-    <div class="card border-info shadow-lg" style="max-width: 35rem;">
-        <div class="card-body">
-            <form method="post">
-                <div class="container m-2,2,2">
-                    {% csrf_token %}
-                    <h5 class="card-title">Czy potwierdzasz, że to wydarzenie <strong>{{ eventtodelete.event }}</strong> zostanie usunięte?</h5>
-                    <hr>
-                </div>
-                <div class="row">
-                    <div class="d-grid gap-2 d-md-block" role="group">
-                        <button class="btn btn-danger" type="submit">Tak</button>
-                        <a  href="{% url 'crud:lostList' %}"><button class="btn btn-info" type="button">Nie</button></a>
+<div class="container fluid p-4">
+    <div class="row align-items-center justify-content-center">
+        <div class="card border-info shadow-lg" style="max-width: 35rem;">
+            <div class="card-body">
+                <form method="post">
+                    <div class="container m-2,2,2">
+                        {% csrf_token %}
+                        <h5 class="card-title">Czy potwierdzasz, że to wydarzenie <strong>{{ eventtodelete.event }}</strong> zostanie usunięte?</h5>
+                        <hr>
                     </div>
-                </div>
-                
-            </form>
-        </div>  
-    </div>
-</div>    
+                    <div class="row">
+                        <div class="d-grid gap-2 d-md-block" role="group">
+                            <button class="btn btn-danger responsive-btn" type="submit">Tak</button>
+                            <a  href="{% url 'crud:lostList' %}"><button class="btn btn-info responsive-btn" type="button">Nie</button></a>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>  
+        </div>
+    </div> 
+</div>   
 {% endblock %}
