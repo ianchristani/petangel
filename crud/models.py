@@ -3,51 +3,50 @@ from django.contrib.auth.models import User
 
 # the table
 class EventModel(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length = 50, blank = False, null = False)
-    event = models.TextField(max_length = 250, blank = False, null = False)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Autor")
+    title = models.CharField(max_length = 50, blank = False, null = False, verbose_name="Tytuł")
+    event = models.TextField(max_length = 250, blank = False, null = False, verbose_name="Opis")
     
     # pet type 
     petType = (
-        ("cat", "cat"),
-        ("dog", "dog"),
-        ("other", "other")
+        ("kot", "kot"),
+        ("pies", "pies"),
+        ("inny", "inny")
     )
-    type = models.CharField(max_length = 5, blank = False, null = False, choices = petType)
+    type = models.CharField(max_length = 5, blank = False, null = False, choices = petType, verbose_name="Typ zwierzaka")
 
     # pet's characteristics Session
     petsCharacteristics_eyes = (
-        ("Yellow/Golden", "Yellow/Golden"),
-        ("Green", "Green"),
-        ("Blue", "Blue"),
-        ("Copper/amber", "Copper/Amber"),
-        ("Odd-Eyed", "Odd-Eyed (2 different colors each)"),
-        ("Mixed Colors", "Mixed Colors")
+        ("Żółty/złoty", "Żółty/złoty"),
+        ("Zielony", "Zielony"),
+        ("Niebieski", "Niebieski"),
+        ("Miedź/bursztyn", "Miedź/bursztyn"),
+        ("Mieszane kolory", "Mieszane kolory")
     )
-    eyesColor = models.CharField(max_length = 35, choices = petsCharacteristics_eyes, blank = True, null = True)
+    eyesColor = models.CharField(max_length = 35, choices = petsCharacteristics_eyes, blank = True, null = True, verbose_name="Kolor oczu")
 
     petsCharacteristics_fur = (
-        ("Black", "Black"),
-        ("White", "White"),
-        ("Orange", "Orange"),
-        ("Grey", "Grey"),
-        ("2 different colors", "2 different colors"),
-        ("3 different colors", "3 different colors")
+        ("Czarny", "Czarny"),
+        ("Biały", "Biały"),
+        ("Rudy", "Rudy"),
+        ("Szary", "Szary"),
+        ("Dwa różne kolory", "Dwa różne kolory"),
+        ("Trzy różne kolory", "Trzy różne kolory")
     )
-    furColor = models.CharField(max_length = 18, choices = petsCharacteristics_fur, help_text="(The dominant one.)")
+    furColor = models.CharField(max_length = 18, choices = petsCharacteristics_fur, help_text="(Dominujący)", verbose_name="Kolor futra")
 
     petsCharacteristics_gender = (
-        ("Male", "Male"),
-        ("Female", "Female")
+        ("Samiec", "Samiec"),
+        ("Samica", "Samica")
     )
-    gender = models.CharField(max_length = 6, choices = petsCharacteristics_gender, blank = True, null = True)
+    gender = models.CharField(max_length = 9, choices = petsCharacteristics_gender, blank = True, null = True, verbose_name="Płeć")
 
     petsCharacteristics_age = (
-        ("baby (until 1 year old)", "baby (until 1 year old)"),
-        ("adult (until 10 years old)", "adult (until 10 years old)"),
-        ("senior (from 10 years old)", "senior (from 10 years old)")
+        ("szczenię (do 1 roku życia)", "szczenię (do 1 roku życia)"),
+        ("dorosły (do 10 roku życia)", "dorosły (do 10 roku życia)"),
+        ("seniorzy (od 10 lat)", "seniorzy (od 10 lat)")
     )
-    age = models.CharField(max_length = 26, choices = petsCharacteristics_age, blank = True, null = True)
+    age = models.CharField(max_length = 26, choices = petsCharacteristics_age, blank = True, null = True, verbose_name="Wiek")
 
     # krakow's neighborhood
     locationOptions = (
@@ -73,15 +72,15 @@ class EventModel(models.Model):
 
     # include the microship (blank = True)
 
-    neighborhood = models.CharField(max_length = 25, choices = locationOptions, help_text="(The last time the pet was seen.)")
-    contact = models.EmailField(blank = True, default = "youremail@example.com", help_text="(This info will be displayed only in the Pet Searcher, if the system finds potential candidates.)")
-    pic  = models.ImageField(null = True, blank=True, upload_to = "media/")
-    date = models.DateField(auto_now = True)
+    neighborhood = models.CharField(max_length = 25, choices = locationOptions, help_text="(Ostatni raz widziano zwierzaka.)", verbose_name="Sąsiedztwo")
+    contact = models.EmailField(blank = True, default = "youremail@example.com", help_text="(Informacja ta wyświetli się tylko w Wyszukiwarce Zwierzaków, jeśli system znajdzie potencjalnych kandydatów.)", verbose_name="Kontakt")
+    pic  = models.ImageField(null = True, blank=True, upload_to = "media/", verbose_name="Zdjęcie")
+    date = models.DateField(auto_now = True, verbose_name="Data")
 
     # if the pet is lost is True
-    lost = models.BooleanField(help_text = "(Mark this field if YOUR pet is LOST. If you found a pet DO NOT mark it.)")
+    lost = models.BooleanField(help_text = "(Zaznacz to pole, jeśli Twój zwierzak ZAGINĄŁ. Jeśli znalazłeś zwierzaka, NIE zaznaczaj żadnego z pól.)", verbose_name="Zaginiony zwierzak")
     # this option is to be marked if the pet was found
-    found = models.BooleanField(default = False, help_text="(Mark this field if your pet was FOUND)")
+    found = models.BooleanField(default = False, help_text="(Zaznacz to pole, jeśli Twój pupil już się ODNALAZŁ. Jeśli znalazłeś zwierzaka, NIE zaznaczaj żadnego z pól.)", verbose_name="Znaleziony zwierzak")
 
     # displaying the colunms with names
     def __str__(self) -> str:

@@ -7,13 +7,13 @@
             <form method="post">
                 <div class="container m-2,2,2">
                     {% csrf_token %}
-                    <h5 class="card-title">Do you confirm this event <strong>{{ eventtodelete.event }}</strong> will be deleted?</h5>
+                    <h5 class="card-title">Czy potwierdzasz, że to wydarzenie <strong>{{ eventtodelete.event }}</strong> zostanie usunięte?</h5>
                     <hr>
                 </div>
                 <div class="row">
                     <div class="d-grid gap-2 d-md-block" role="group">
-                        <button class="btn btn-danger" type="submit">Yes</button>
-                        <a  href="{% url 'crud:lostList' %}"><button class="btn btn-info" type="button">No</button></a>
+                        <button class="btn btn-danger" type="submit">Tak</button>
+                        <a  href="{% url 'crud:lostList' %}"><button class="btn btn-info" type="button">Nie</button></a>
                     </div>
                 </div>
                 

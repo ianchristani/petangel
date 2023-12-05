@@ -5,14 +5,14 @@
     <div class="card border-info shadow-lg" style="max-width: 35rem;">
         <div class="card-body">
             <div class="container m-2,2,2">
-                <h5 class="card-title"><strong>Are you sure you wan't to logout?</strong></h5>
+                <h5 class="card-title"><strong>Na pewno chcesz się wylogować?</strong></h5>
                 <hr>
             </div>            
             <div class="container mt-6">
                 <form action="{% url 'users:logout' %}" method="post">
                     {% csrf_token %}
                     <div class="container text-center mt-6">
-                        <button class="btn btn-info" type="submit">Logout</button>
+                        <button class="btn btn-info" type="submit">Wyloguj</button>
                     </div>
                 </form>
             </div>            
