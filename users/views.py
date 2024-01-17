@@ -37,8 +37,12 @@ def login_view(request):
 
 # logout page
 def logout_view(request):
-    candidates = eventSearcher(request.user)
-    amountResults = len(candidates)
+    try:
+        candidates = eventSearcher(request.user)
+        amountResults = len(candidates)
+    except:
+        amountResults = 0
+
     if request.method == "POST":
         logout(request)
         return redirect("users:index")

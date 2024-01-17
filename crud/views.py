@@ -8,27 +8,36 @@ from .searcher.searcher import eventSearcher
 # lost pets page
 def lostList(request):
     events = EventModel.objects.all().order_by("-date")
-    candidates = eventSearcher(request.user)
-    amountResults = len(candidates)
+    try:
+        candidates = eventSearcher(request.user)
+        amountResults = len(candidates)
+    except:
+        amountResults = 0
     return render(request, "lostlist.html", {"eventsToTemplate": events, "username": request.user, "amountOfCandidates": amountResults})
 
 # found pets page
 def foundList(request):
     events = EventModel.objects.all().order_by("-date")
-    candidates = eventSearcher(request.user)
-    amountResults = len(candidates)
+    try:
+        candidates = eventSearcher(request.user)
+        amountResults = len(candidates)
+    except:
+        amountResults = 0
     return render(request, "foundlist.html", {"eventsToTemplate": events, "username": request.user, "amountOfCandidates": amountResults})
 
 # the page to add a new event
 def newEvent(request):
     newEventForm = EventForm(request.POST or None, request.FILES or None, initial = {'author': request.user})
-    candidates = eventSearcher(request.user)
-    amountResults = len(candidates)
+    try:
+        candidates = eventSearcher(request.user)
+        amountResults = len(candidates)
+    except:
+        amountResults = 0
 
     if newEventForm.is_valid():
         newEventForm.instance.author = request.user
         newEventForm.save()
-        # aqui deve ter alguma confirmacao dq foi incluido o post
+        # problema a ser corrigido
         return redirect("crud:lostList")
     
     # restricting the user's name options
@@ -39,8 +48,11 @@ def newEvent(request):
 def updateEvent(request, id):
     selectedEvent = EventModel.objects.get(id = id)
     newEventForm = EventForm(request.POST or None, request.FILES or None, instance = selectedEvent)
-    candidates = eventSearcher(request.user)
-    amountResults = len(candidates)
+    try:
+        candidates = eventSearcher(request.user)
+        amountResults = len(candidates)
+    except:
+        amountResults = 0
 
     if newEventForm.is_valid():
         newEventForm.save()
@@ -51,8 +63,11 @@ def updateEvent(request, id):
 # event deleter
 def deleteEvent(request, id):
     selectedEvent = EventModel.objects.get(id = id)
-    candidates = eventSearcher(request.user)
-    amountResults = len(candidates)
+    try:
+        candidates = eventSearcher(request.user)
+        amountResults = len(candidates)
+    except:
+        amountResults = 0
 
     # deleting
     if request.method == "POST":        
@@ -64,8 +79,11 @@ def deleteEvent(request, id):
 # page to show the pic larger
 def specificEvent(request, id):
     selectedEvent = EventModel.objects.get(id = id)
-    candidates = eventSearcher(request.user)
-    amountResults = len(candidates)
+    try:
+        candidates = eventSearcher(request.user)
+        amountResults = len(candidates)
+    except:
+        amountResults = 0
     if request.method == "GET":
         return render(request, "specificevent.html", {"event": selectedEvent, "id": selectedEvent, "amountOfCandidates": amountResults})
     else:
@@ -73,6 +91,9 @@ def specificEvent(request, id):
     
 # page that contains the possible candidates
 def possibleCandidates(request):
-    candidates = eventSearcher(request.user)
-    amountResults = len(candidates)
+    try:
+        candidates = eventSearcher(request.user)
+        amountResults = len(candidates)
+    except:
+        amountResults = 0
     return render(request, "possiblecandidates.html", {"possCandidates": candidates, "amountOfCandidates": amountResults})
